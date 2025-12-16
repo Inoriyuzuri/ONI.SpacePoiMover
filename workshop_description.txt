@@ -1,0 +1,47 @@
+[h1]Space POI Mover[/h1]
+
+Move any space POI to wherever you want on the starmap.
+
+[b]How to Use[/b]
+[olist]
+[*]Open Starmap (M key)
+[*]Click a POI
+[*]Click "Move This" or "Move All"
+[*]Click destination
+[/olist]
+
+[b]Features[/b]
+[list]
+[*]Move harvestable POIs & artifact POIs
+[*]Move single or all POIs on a hex
+[*]Visual feedback (green=valid, red=invalid)
+[/list]
+
+Requires Spaced Out! DLC
+
+[hr]
+
+[h1]太空POI移动器[/h1]
+
+把太空POI移动到星图上任意位置。
+
+[b]使用方法[/b]
+[olist]
+[*]打开星图 (M键)
+[*]点击POI
+[*]点击"Move This 移动选中"或"Move All 移动全部"
+[*]点击目标位置
+[/olist]
+
+[b]功能[/b]
+[list]
+[*]移动资源POI和文物POI
+[*]单独或批量移动
+[*]可视化反馈 (绿色=有效，红色=无效)
+[/list]
+
+需要眼冒金星DLC
+
+[hr]
+By Inoriyuzuri | QQ: 523590411
+[url=https://github.com/Inoriyuzuri/ONI.SpacePoiMover]GitHub[/url]

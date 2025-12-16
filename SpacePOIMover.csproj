@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>SpacePOIMover</AssemblyName>
+    <RootNamespace>SpacePOIMover</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <!-- Update these paths to match your game installation -->
+  <PropertyGroup>
+    <GameLibsPath>$(ONI_LIBS)</GameLibsPath>
+    <GameLibsPathWindows>D:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibsPathWindows>
+    <GameLibsPathLinux>$(HOME)/.steam/steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded_Data/Managed</GameLibsPathLinux>
+    <GameLibsPathMac>$(HOME)/Library/Application Support/Steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibsPathMac>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GameLibsPath)' == '' AND Exists('$(GameLibsPathWindows)')">
+    <GameLibsPath>$(GameLibsPathWindows)</GameLibsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GameLibsPath)' == '' AND Exists('$(GameLibsPathLinux)')">
+    <GameLibsPath>$(GameLibsPathLinux)</GameLibsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GameLibsPath)' == '' AND Exists('$(GameLibsPathMac)')">
+    <GameLibsPath>$(GameLibsPathMac)</GameLibsPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameLibsPath)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameLibsPath)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(GameLibsPath)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameLibsPath)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameLibsPath)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextMeshPro">
+      <HintPath>$(GameLibsPath)\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameLibsPath)\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>$(GameLibsPath)\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <ModOutputPath>C:\Users\Inoriyuzuriha\Documents\Klei\OxygenNotIncluded\mods\Dev\SpacePOIMover</ModOutputPath>
+  </PropertyGroup>
+
+  <Target Name="CopyToModFolder" AfterTargets="Build">
+    <MakeDir Directories="$(ModOutputPath)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModOutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)mod_info.yaml" DestinationFolder="$(ModOutputPath)" />
+    <Copy SourceFiles="$(ProjectDir)mod.yaml" DestinationFolder="$(ModOutputPath)" />
+    <Message Text="Mod copied to $(ModOutputPath)" Importance="High" />
+  </Target>
+</Project>
